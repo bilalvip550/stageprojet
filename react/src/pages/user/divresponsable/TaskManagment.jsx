@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './TaskManagment.css'
+import './stylesres/TaskManagment.css'
 const TaskManagement = () => {
   const [tasks, setTasks] = useState([
     {

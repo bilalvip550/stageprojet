@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { formatDistanceToNow } from 'date-fns';
-import './dachboarespage.css';
+import './stylesres/dachboarespage.css';
 
 const apiUrl = 'http://127.0.0.1:8000/api/v1';
 

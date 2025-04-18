@@ -87,7 +87,7 @@ export default function Maincontent({ user }) {
                 <li className="menu-item">
                   <Link to="/app/Division" className="menu-link">
                     <Iconsio5.IoAnalytics size={32} className="menu-icon" />
-                    <span className="menu-text">Division Performance</span>
+                    <span className="menu-text">Division Management</span>
                   </Link>
                 </li>
                 <li className="menu-item">
@@ -143,18 +143,20 @@ export default function Maincontent({ user }) {
             </IconButton>
             <Menu
               id="profile-menu"
+              style={{padding:"0%"}}
               anchorEl={anchorEl}
               open={open}
               onClose={handleCloseMenu}
               anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
               transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             >
+              <Link to={`/app/Profile/${user.username}/${user.role}/${user.division_id}`} >
               <MenuItem onClick={() => {
-                handleCloseMenu();
-                navigate('/app/Profile');
+                handleCloseMenu(); 
               }}>
-                Profile
+                    <span >Profile</span>
               </MenuItem>
+              </Link>
               <MenuItem onClick={() => (window.location.href = '/')}>Logout</MenuItem>
             </Menu>
           </div>
@@ -163,7 +165,7 @@ export default function Maincontent({ user }) {
 
       <main className="main-content">
         <Routes>
-          <Route path="Profile" element={<UserProfile />} />
+          <Route path="Profile/:user/:role/:division" element={<UserProfile />} />
           {user.role === 'admin' && (
             <>
               <Route index element={<AdminDachboard />} />
@@ -176,7 +178,7 @@ export default function Maincontent({ user }) {
           {user.role === 'division_responsable' && (
             <>
               <Route index element={<DashboardPage user={user} />} />
-              <Route path="Detail" element={<TaschesDetaile />} />
+              <Route path="Detail" element={<TaschesDetaile user={user} />} />
               <Route path="history/:id" element={<History />} />
               <Route path="TaskManagment" element={<TaskManagment />} />
               <Route path="Settings" element={<Settings />} />
